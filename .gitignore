@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+fut.so
+fut.dylib
+fut.dll
+fut.a
+fut.lib
+fut-test-*
+*.exe
+*.o
+*.obj
+*.lst
+*.swp

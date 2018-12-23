@@ -1,0 +1,9 @@
+{
+	"description": "Unit tests as a fitness function",
+	"license": "GPLv3",
+	"authors": [
+		"Faissal Bensefia"
+	],
+	"copyright": "Copyright © 2018, Faissal Bensefia",
+	"name": "fut"
+}
