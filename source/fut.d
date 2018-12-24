@@ -2,6 +2,9 @@ import std.stdio;
 import std.conv;
 import std.math;
 import std.algorithm;
+import std.string;
+import std.range;
+import std.typecons;
 
 class Unit
 {
@@ -39,7 +42,8 @@ class Unit
 
 	auto score(string target, string value)
 	{
-		results ~= 1-levenshteinDistance(target, value).to!real/max(target.length, value.length);
+		//Try and get rid of these dups later, we don't actually need any mutability
+		score!(ubyte)(target.representation().dup, value.representation().dup);
 	}
 	unittest
 	{
@@ -54,7 +58,7 @@ class Unit
 
 	auto score(T)(T[] target, T[] value)
 	{
-		results ~= 1-levenshteinDistance(target, value).to!real/max(target.length, value.length);
+		zip(StoppingPolicy.longest, target, value).each!((i) => score!(T)(i[0], i[1]));
 	}
 	unittest
 	{
