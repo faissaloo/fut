@@ -54,6 +54,14 @@ class Unit
 		unitB.score("End","End");
 
 		assert(unitB.fitness() > unitA.fitness());
+
+		unitA = new Unit();
+		unitB = new Unit();
+
+		unitA.score("Start","aaaaaaa");
+		unitB.score("Start","Star");
+
+		assert(unitA.fitness() < unitB.fitness());
 	}
 
 	auto score(T)(T[] target, T[] value)
@@ -73,7 +81,7 @@ class Unit
 
 	auto fitness()
 	{
-		return mean(results);
+		return results.reduce!((accumulator, i) => accumulator*i);
 	}
 	unittest
 	{
