@@ -66,6 +66,7 @@ class Unit
 
 	auto score(T)(T[] target, T[] value)
 	{
+		score!(size_t)(target.length, value.length);
 		zip(StoppingPolicy.longest, target, value).each!((i) => score!(T)(i[0], i[1]));
 	}
 	unittest
